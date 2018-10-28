@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   post 'persons/role_person/:role_person' => 'persons#role_person', as: 'role_person'
   get 'company' => 'companies#company'
 
+  get 'get_clients' => 'home#get_clients'
+  get 'get_data' => 'home#get_data'
+
   resources :companies do
     get 'add_field' => 'companies#add_field', module: :companies
 

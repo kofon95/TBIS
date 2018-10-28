@@ -8,6 +8,7 @@ class Companies::ClientsController < ApplicationController
 
   # GET /clients
   # GET /clients.json
+
   def index
     @people_company = Client.where(company: @current_company.id)
     @people_clients = @people_company.where("(role & #{Client::Role::CLIENT}) != 0")

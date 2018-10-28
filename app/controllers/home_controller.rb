@@ -1,6 +1,24 @@
 class HomeController < ApplicationController
   layout 'application'
 
+  def get_clients
+    clients = Client.where company_id: @current_company.id
+
+    respond_to do |format|
+      format.json { render json: clients, status: :ok }
+    end
+  end
+
+  def get_data
+    info_block = InfoBlock.where company_id: @current_company.id
+    ft = FieldTemplate.where info_block_id: info_block
+    fd = FieldDatum.where field_id: ft.select(:field_id)
+
+    respond_to do |format|
+      format.json { render json: fd, status: :ok }
+    end
+  end
+
   def index
   end
   def search_result
