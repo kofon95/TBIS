@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   layout 'application'
 
   def get_clients
-    clients = Client.where company_id: @current_company.id
+    clients = Client.where company_id: 8
 
     respond_to do |format|
       format.json { render json: clients, status: :ok }
@@ -13,7 +13,7 @@ class HomeController < ApplicationController
     # info_block = InfoBlock.where company_id: @current_company.id
     # ft = FieldTemplate.where info_block_id: info_block.select(:id)
     # fd = FieldDatum.where field_id: ft.select(:field_id)
-    clients = Client.where company_id: @current_company.id
+    clients = Client.where company_id: 8
     fd = FieldDatum.where client_id: clients.select(:id)
 
     respond_to do |format|
