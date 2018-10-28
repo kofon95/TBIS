@@ -10,9 +10,10 @@ class HomeController < ApplicationController
   end
 
   def get_data
-    info_block = InfoBlock.where company_id: @current_company.id
-    ft = FieldTemplate.where info_block_id: info_block
-    fd = FieldDatum.where field_id: ft.select(:field_id)
+    # info_block = InfoBlock.where company_id: @current_company.id
+    # ft = FieldTemplate.where info_block_id: info_block.select(:id)
+    # fd = FieldDatum.where field_id: ft.select(:field_id)
+    fd = FieldDatum.all
 
     respond_to do |format|
       format.json { render json: fd, status: :ok }
